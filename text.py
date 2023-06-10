@@ -4,6 +4,9 @@ import numpy as np
 from scipy import signal
 import control as ctl
 
+st.title("202041002")
+st.header("고성익")
+
 # 전달함수 G1 정의
 G1 = ctl.TransferFunction([100],[1, 5, 6])
 
