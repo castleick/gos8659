@@ -16,10 +16,11 @@ systems = [G0,G1, G2, G3]
 labels = ['Proportional Element', 'Intergral Element', 'First-Order Lag Element', 'Overall System']
 colors = ['r', 'g', 'b', 'm']
 
-fig=plt.figure()
+
 plt.figure(figsize=(12, 8))
 
 # Bode magnitude plot
+fig=plt.figure()
 plt.subplot(2, 1, 1)
 for sys, label, color in zip(systems, labels, colors):
     w, mag,_= sys.bode(frequencies)
