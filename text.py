@@ -2,6 +2,31 @@ import streamlit as st
 import matplotlib.pyplot as plt 
 import numpy as np 
 from scipy import signal
+import control as ctl
+
+# 전달함수 G1 정의
+G1 = ctl.TransferFunction([100],[1, 5, 6])
+
+#전달함수 출력
+st.write(G1)
+
+#feedback
+G2 = ctl.feedback(G1)
+
+#전달함수 출력
+st.write(G2)
+
+# Step Response 그래프 그리기
+fig3=plt.figure()
+t, y = ctl.step_response(G4)
+plt.plot(t, y)
+plt.xlabel('Time (sec)')
+plt.ylabel('Amplitude')
+plt.title('Step Response')
+plt.grid()
+plt.show()
+
+st.pyplot(fig3)
 
 # Define the systems  
 G0 = signal.lti([100], [1])
