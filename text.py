@@ -2,27 +2,42 @@ import matplotlib.pyplot as plt
 import numpy as np 
 from scipy import signal
 
-# Define the transfer function G(s) = 100 / (s+2)(s+3) 
-s1 = signal.lti([100],[1, 5, 6])
+# Define the systems  
+G0 = signal.lti([100], [1])
+G1 = signal.lti([1], [1, 1, 2])
+G2 = signal.lti([1], [1, 1, 3])
+G3 = signal.lti([100], [1, 5, 6])
 
 # Define the frequency range
 frequencies = np.logspace (-2, 2, 500)
 
-# Calculate frequency response 
-w, mag, phase = s1.bode(frequencies)
+# Calculate frequency response
+systems = [G0,G1, G2, G3]
+labels = ['Proportional Element', 'Intergral Element', 'First-Order Lag Element', 'Overall System']
+colors = ['r', 'g', 'b', 'm']
 
-#create bode magnitude plot 
 fig=plt.figure()
-plt.figure()
-plt.subplot(2, 1, 1)
-plt.semilogx(w, mag) #Bode magnitude plot
-plt.title('Bode plot of G(S) = 100 / (s+2)(s+3)')
-plt.ylabel('Magnitude [dB]')
+plt.figure(figsize=(12, 8))
 
-# Create Bode phase plot 
-plt.subplot(2, 1, 2)
-plt.semilogx(w, phase) # Bode phase plot
-plt.ylabel('Phase [degrees]')
-plt.xlabel('Frequency [Hz]')
-plt.show() 
+# Bode magnitude plot
+plt.subplot(2, 1, 1)
+for sys, label, color in zip(systems, lables, colors):
+    w, mag,_= sys.bode(frequencies)
+    plt.semilogx(w, mag, color=color, label=label)
+plt.title('Bode plot')
+plt.ylabel('Magnitude [dB]')
+plt.legend()
 st.pyplot(fig)
+
+# Bode phase plot
+fig1 = plt.figure()
+plt.subplot(2, 1, 2)
+for sys, _, color in zip(systems, labels, colors):
+    w, _, phase = sys.bode(frequencies)
+    plt.semilogx(w, phase, color=color)
+plt.ylabel('phase [degrees]')
+plt.legend('Frequency [Hz]')
+
+plt.show()
+
+st.pyplot(fig1)
