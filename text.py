@@ -1,5 +1,5 @@
-import numpy as np 
 import matplotlib.pyplot as plt 
+import numpy as np 
 from scipy import signal
 
 # Define the transfer function G(s) = 100 / (s+2)(s+3) 
@@ -9,7 +9,7 @@ s1 = signal.lti([100],[1, 5, 6])
 frequencies = np.logspace (-2, 2, 500)
 
 # Calculate frequency response 
-w, mag, phase = s1.blode(frequencies)
+w, mag, phase = s1.bode(frequencies)
 
 #create bode magnitude plot 
 fig=plt.figure()
