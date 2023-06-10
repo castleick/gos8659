@@ -21,7 +21,7 @@ plt.figure(figsize=(12, 8))
 
 # Bode magnitude plot
 plt.subplot(2, 1, 1)
-for sys, label, color in zip(systems, lables, colors):
+for sys, label, color in zip(systems, labels, colors):
     w, mag,_= sys.bode(frequencies)
     plt.semilogx(w, mag, color=color, label=label)
 plt.title('Bode plot')
