@@ -7,14 +7,8 @@ import control as ctl
 # 전달함수 G1 정의
 G1 = ctl.TransferFunction([100],[1, 5, 6])
 
-#전달함수 출력
-st.write(G1)
-
 #feedback
 G2 = ctl.feedback(G1)
-
-#전달함수 출력
-st.write(G2)
 
 # Step Response 그래프 그리기
 fig3=plt.figure()
