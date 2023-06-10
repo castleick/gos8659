@@ -18,7 +18,7 @@ st.write(G2)
 
 # Step Response 그래프 그리기
 fig3=plt.figure()
-t, y = ctl.step_response(G4)
+t, y = ctl.step_response(G2)
 plt.plot(t, y)
 plt.xlabel('Time (sec)')
 plt.ylabel('Amplitude')
